@@ -5,17 +5,9 @@
 // Function to insert an element
 int insert_element(int arr[], int n) {
     int p, pos, val, i;
-    if (n >= N) {
-        printf("Array is full! Cannot insert more elements.\n");
-        return n;
-    }
     printf("Enter the position to insert the element (1 to %d): ", n+1);
     scanf("%d", &p);
-    if (p < 1 || p > n+1) {
-        printf("Invalid position!\n");
-        return n;
-    }
-    pos = p - 1;
+        pos = p - 1;
     for (i = n - 1; i >= pos; i--) {
         arr[i + 1] = arr[i];
     }
@@ -29,16 +21,8 @@ int insert_element(int arr[], int n) {
 // Function to delete an element
 int delete_element(int arr[], int n) {
     int p, pos, i;
-    if (n <= 0) {
-        printf("Array is empty! Cannot delete elements.\n");
-        return n;
-    }
     printf("Enter the position to delete an element (1 to %d): ", n);
     scanf("%d", &p);
-    if (p < 1 || p > n) {
-        printf("Invalid position!\n");
-        return n;
-    }
     pos = p - 1;
     for (i = pos; i < n - 1; i++) {
         arr[i] = arr[i + 1];
@@ -49,10 +33,6 @@ int delete_element(int arr[], int n) {
 
 // Function to display the array
 void display_array(int arr[], int n) {
-    if (n == 0) {
-        printf("Array is empty!\n");
-        return;
-    }
     printf("Your array is: ");
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
