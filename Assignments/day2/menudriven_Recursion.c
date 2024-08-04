@@ -9,11 +9,10 @@ int factorial(int n) {
 }
 
 
-int fibonacci(int n) {
-    if (n <= 1)
-        return n;
-    else
-        return fibonacci(n - 1) + fibonacci(n - 2);
+int fibo(int n) {
+    if(n==1) return 0;
+    else if(n==2) return 1;
+    else return fibo(n-1)+ fibo(n-2);
 }
 
 
@@ -49,7 +48,7 @@ int main() {
                 printf("Enter a non-negative integer: ");
                 scanf("%d", &num1);
                 
-                printf("Fibonacci number at position %d is %d\n", num1, fibonacci(num1));
+                printf("Fibonacci number at position %d is %d\n", num1, fibo(num1));
                
                 break;
 
