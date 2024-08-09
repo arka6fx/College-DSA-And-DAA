@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-void linearSearch(int arr[], int n, int x) {
+void linearSearch(int arr[], int n) {
+    int x;
     printf("Enter the element to search: ");
         scanf("%d", &x);
     for(int i = 0; i < n; i++) {
@@ -12,7 +13,8 @@ void linearSearch(int arr[], int n, int x) {
     printf("Element %d not found in the array\n", x);
 }
 
-void binarySearch(int arr[], int n, int x) {
+void binarySearch(int arr[], int n) {
+    int x;
     printf("Enter the element to search: ");
         scanf("%d", &x);
     int low = 0, high = n - 1;
@@ -45,7 +47,7 @@ void sortArray(int arr[], int n) {
 }
 
 int main() {
-    int choice, n, x;
+    int choice, n;
     printf("Enter the number of elements in the array: ");
     scanf("%d", &n);
     
@@ -65,11 +67,11 @@ int main() {
 
         switch(choice) {
             case 1:
-                linearSearch(arr, n, x);
+                linearSearch(arr, n);
                 break;
             case 2:
                 sortArray(arr, n);
-                binarySearch(arr, n, x);
+                binarySearch(arr, n);
                 break;
             case 3:
                 return 0;
