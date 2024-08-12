@@ -13,6 +13,6 @@ int main(){
 	int n;
 	printf("Enter the number of disk:");
 	scanf("%d",&n);
-	printf("The tower of hanoi of %d disks are:\n",n );
+	printf("The tower of hanoi of %d disk:\n",n );
 	tower(n,'a','b','c');
 }

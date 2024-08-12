@@ -18,9 +18,10 @@ void pop() {
         printf("Underflow\n");
     } else {
     	x=stack[top];
-    	printf("%d",x);
+        printf("The popped item is %d.\n",x);
         top--;
     }
+    
 }
 
 void display() {

@@ -1,31 +1,25 @@
 #include <stdio.h>
 
 
-int factorial(int n) {
+int fact(int n) {
     if (n == 0)
         return 1;
     else
-        return n * factorial(n - 1);
+        return n * fact(n - 1);
 }
-
-
 int fibo(int n) {
-    if(n==1) return 0;
-    else if(n==2) return 1;
-    else return fibo(n-1)+ fibo(n-2);
+    if(n==0) return 0;
+    else if(n==1) return 1;
+    else  return fibo(n-1)+ fibo(n-2);
 }
-
-
 int gcd(int a, int b) {
-    if (b == 0)
-        return a;
+    if (a%b == 0)
+        return b;
     else
         return gcd(b, a % b);
 }
-
 int main() {
-    int choice, num1, num2;
-
+    int choice, num1,term,i, num2;
     while (1) {
         printf("\nMenu:\n");
         printf("1. Calculate Factorial\n");
@@ -40,16 +34,17 @@ int main() {
                 printf("Enter a non-negative integer: ");
                 scanf("%d", &num1);
                
-                printf("Factorial of %d is %d\n", num1, factorial(num1));
+                printf("Factorial of %d is %d\n", num1, fact(num1));
                 
                 break;
 
             case 2:
-                printf("Enter a non-negative integer: ");
-                scanf("%d", &num1);
-                
-                printf("Fibonacci number at position %d is %d\n", num1, fibo(num1));
-               
+                printf("Enter the term no. upto which you want your fibonacci series: ");
+                scanf("%d", &term);
+                printf("Your fibonacci series is: ");
+                for(i=0;i<term;i++){
+                    printf("%d ",fibo(i));
+                }
                 break;
 
             case 3:
