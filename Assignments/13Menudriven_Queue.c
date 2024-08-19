@@ -24,6 +24,7 @@ void dequeue(){
         return;
      }
      else if (rear == front){
+        printf("The dequeued element is %d",queue[front]);
         rear=front=-1;
      }
      else{

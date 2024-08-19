@@ -9,6 +9,7 @@ int top = -1;
 void push(int num) {
     if (top == MAX - 1) {
         printf("Stack Overflow\n");
+        
     } else {
         stack[++top] = num;
     }
@@ -17,7 +18,7 @@ void push(int num) {
 int pop() {
     if (top == -1) {
         printf("Stack Underflow\n");
-        return -1;
+        return 0;
     } else {
         return stack[top--];
     }
