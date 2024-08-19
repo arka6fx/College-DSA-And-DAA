@@ -2,7 +2,7 @@
 
 #define N 50
 
-// Function to insert an element
+
 int insert_element(int arr[], int n) {
     int p, pos, val, i;
     printf("Enter the position to insert the element (1 to %d): ", n+1);
@@ -18,7 +18,7 @@ int insert_element(int arr[], int n) {
     return n;
 }
 
-// Function to delete an element
+
 int delete_element(int arr[], int n) {
     int p, pos, i;
     printf("Enter the position to delete an element (1 to %d): ", n);
@@ -31,7 +31,7 @@ int delete_element(int arr[], int n) {
     return n;
 }
 
-// Function to display the array
+
 void display_array(int arr[], int n) {
     printf("Your array is: ");
     for (int i = 0; i < n; i++) {
