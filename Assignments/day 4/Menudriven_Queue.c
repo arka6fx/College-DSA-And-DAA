@@ -1,50 +1,53 @@
 #include<stdio.h>
-#define N 5
-int queue[N];
+#define MAX 5
+int queue[MAX];
 int rear=-1;
 int front=-1;
 
-void enqueue(int num){
-     if(rear == N-1){
+void enqueue(int val){
+     if(rear == MAX-1){
         printf("Overflow");
+        return;
      }
-     else {
-        if(front==-1) front=0;
-        rear++;  
-        queue[rear]=num;
-    
-    }
+     else if (rear == -1 && front == -1){
+        rear = front = 0;
+     }
+     else{
+      rear++;
+     }
+     queue[rear]=val;
 }
 
 void dequeue(){
-       if(front==-1){
-         printf("Underflow");
-       }
-       else{
-         printf("The dequeued element is %d",queue[front]);
-         front++;
-         if(front>rear) {
-            front = rear  = - 1;
-         }
-       }
+      if (rear == -1 && front ==-1){
+        printf("Underflow");
+        return;
+     }
+     else if (rear == front){
+        rear=front=-1;
+     }
+     else{
+        printf("The dequeued element is %d",queue[front]);
+        front++;
+     }
 }
 
 void display(){
-    int i;
-    if(front==-1){
-       printf("Underflow");
-       }
-    else{
-        for ( i = front; i < rear+1; i++){
+  int i;
+   if (rear == -1 && front ==-1){
+        printf("Underflow");
+        return;
+     }
+    printf("Your Queue elements are: \n");    
+     for ( i = front; i < rear+1; i++){
         printf("%d ",queue[i]);
-    }
-
-    }
+     }
+     
    
     
 }
 int main(){
-	int choice,num;
+	int choice,val;
 	while(1){
 		printf("\nMenu: \n");
 		printf("1.Insert\n");
@@ -55,8 +58,8 @@ int main(){
         scanf("%d",&choice);
         switch(choice){
             case 1: printf("Enter the value to insert:");
-                    scanf("%d",&num);
-                    enqueue(num);
+                    scanf("%d",&val);
+                    enqueue(val);
                     break;
             case 2: dequeue();
                     break;

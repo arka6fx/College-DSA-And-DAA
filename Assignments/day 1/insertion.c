@@ -2,7 +2,7 @@
 #define N 50
 int main()
 {
-  int arr[N], i, n, p, pos, val;
+  int arr[N], i, n, pos, val;
   printf("Enter the number of elements: ");
   scanf("%d", &n);
   printf("Enter the elements of the array: ");
@@ -10,9 +10,9 @@ int main()
   {
     scanf("%d", &arr[i]);
   }
-  printf("Enter the position  to insert the element: ");
-  scanf("%d", &p);
-  pos = p - 1;
+  printf("Enter the index  to insert the element: ");
+  scanf("%d", &pos);
+
   for (i = n - 1; i >= pos; i--)
   {
     arr[i + 1] = arr[i];

@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 #define MAX 100
 
@@ -24,7 +23,7 @@ int pop() {
     }
 }
 
-int evaluatePostfix(char* exp) {
+int evaluatePostfix(char exp[]) {
     int i;
     for (i = 0; exp[i] != '\0'; i++) {
         
