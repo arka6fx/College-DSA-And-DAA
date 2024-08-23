@@ -1,44 +1,44 @@
 #include <stdio.h>
 #include <ctype.h>
 
-#define MAX 100
-
+#define MAX 50
 int stack[MAX];
 int top = -1;
 
-void push(int num) {
+void push(int val) {
     if (top == MAX - 1) {
-        printf("Stack Overflow\n");
-        
+        printf("Overflow\n");
     } else {
-        stack[++top] = num;
+        stack[++top] = val;
     }
 }
 
 int pop() {
     if (top == -1) {
-        printf("Stack Underflow\n");
-        return 0;
+        printf("Underflow\n");
     } else {
         return stack[top--];
     }
 }
 
-int evaluatePostfix(char exp[]) {
+int evaluateToPostfix(char postfix[]) {
     int i;
-    for (i = 0; exp[i] != '\0'; i++) {
-        
-        if (isdigit(exp[i])) {
-            push(exp[i] - '0');
-        } 
-        else {
-            int a = pop();
-            int b = pop();
-            switch (exp[i]) {
-                case '+': push(b + a); break;
-                case '-': push(b - a); break;
-                case '*': push(b * a); break;
-                case '/': push(b / a); break;
+    int a, b;
+    for (i = 0; postfix[i] != '\0'; i++) {
+        if (isdigit(postfix[i])) {
+            push(postfix[i] - '0');
+        } else {
+            a = pop();
+            b = pop();
+            switch (postfix[i]) {
+                case '+': push(b + a);
+                          break;
+                case '-': push(b - a);
+                          break;
+                case '*': push(b * a);
+                          break;
+                case '/': push(b / a);
+                          break;
             }
         }
     }
@@ -46,12 +46,9 @@ int evaluatePostfix(char exp[]) {
 }
 
 int main() {
-    char exp[MAX];
-    
-    printf("Enter postfix expression: ");
-    scanf("%s", exp);
-    
-    printf("The result of the postfix evaluation is: %d\n", evaluatePostfix(exp));
-    
+    char postfix[MAX];
+    printf("Enter the postfix expression: ");
+    scanf("%s", postfix);
+    printf("The Evaluation of postfix expression is: %d\n", evaluateToPostfix(postfix));
     return 0;
 }

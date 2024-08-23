@@ -9,7 +9,6 @@ void tower(int n,char Beg,char Aux,char End){
 	 }
 }
 int main(){
-	char a,b,c;
 	int n;
 	printf("Enter the number of disk:");
 	scanf("%d",&n);
