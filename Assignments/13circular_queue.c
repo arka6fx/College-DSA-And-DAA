@@ -35,13 +35,19 @@ void dequeue(){
 	
 }
 
-display(){
+void display(){
 	
 	int i=front;
-	int v,j;
+	int v,j,k;
 	int count=0;
 	if(rear==-1 && front==-1){
-		printf("Underflow");
+		printf("Underflow\n");
+		printf("Your Circular queue is: ");
+		for ( k = 0; k < 6; k++)
+		{
+			printf("* ");
+		}
+		
 		return;
 	}
 	
