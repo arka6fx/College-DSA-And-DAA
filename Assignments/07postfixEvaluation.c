@@ -26,7 +26,7 @@ int evaluateToPostfix(char postfix[]) {
     int a, b;
     for (i = 0; postfix[i] != '\0'; i++) {
         if (isdigit(postfix[i])) {
-            push(postfix[i] - '0');
+            push('postfix[i]' - '0');
         } else {
             a = pop();
             b = pop();
