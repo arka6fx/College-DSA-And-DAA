@@ -1,11 +1,9 @@
 #include <stdio.h>
-
 void quickSort(int arr[], int beg, int end);
 int partition(int arr[], int beg, int end);
 
 void quickSort(int arr[], int beg, int end) {
     int loc;
-
     if (beg < end) {
         loc = partition(arr, beg, end);
         quickSort(arr, beg, loc - 1);
@@ -38,8 +36,16 @@ int partition(int arr[], int beg, int end) {
 }
 
 int main() {
-    int arr[] = {29, 10, 14, 37, 14};
-    int n = sizeof(arr) / sizeof(arr[0]);
+   int n, i;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter %d elements: ", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
 
     quickSort(arr, 0, n - 1);
 
