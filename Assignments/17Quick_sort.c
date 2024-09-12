@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 void quickSort(int arr[], int beg, int end);
 int partition(int arr[], int beg, int end);
 
@@ -6,22 +7,26 @@ void quickSort(int arr[], int beg, int end) {
     int loc;
     if (beg < end) {
         loc = partition(arr, beg, end);
-        quickSort(arr, beg, loc - 1);
-        quickSort(arr, loc + 1, end);
+        quickSort(arr, beg, loc - 1);  // Recursively sort the left partition
+        quickSort(arr, loc + 1, end);  // Recursively sort the right partition
     }
 }
 
 int partition(int arr[], int beg, int end) {
-    int pivot = arr[beg];
-    int left = beg;
-    int right = end;
+    int pivot = arr[beg];  // Choose the first element as pivot
+    int left = beg;    // Start `left` from the next element
+    int right = end;       // `right` starts from the end of the array
 
-    while (left < right) {
-        while (arr[left] <= pivot && left < right)
+    while (left <= right) {
+        // Move `left` forward while elements are smaller or equal to pivot
+        while (left <= end && arr[left] <= pivot) {
             left++;
-        while (arr[right] > pivot )
+        }
+        // Move `right` backward while elements are larger than pivot
+        while (arr[right] > pivot) {
             right--;
-        
+        }
+        // If `left` is still less than `right`, swap the elements
         if (left < right) {
             int temp = arr[left];
             arr[left] = arr[right];
@@ -29,14 +34,16 @@ int partition(int arr[], int beg, int end) {
         }
     }
 
+    // Place pivot in its correct position
+    int temp = arr[beg];
     arr[beg] = arr[right];
-    arr[right] = pivot;
+    arr[right] = temp;
 
-    return right;
+    return right;  // Return the index of the pivot
 }
 
 int main() {
-   int n, i;
+    int n, i;
 
     printf("Enter the size of array: ");
     scanf("%d", &n);
@@ -45,13 +52,13 @@ int main() {
     for (i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-    
 
     quickSort(arr, 0, n - 1);
 
     printf("Sorted array: ");
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
+    }
     printf("\n");
 
     return 0;
