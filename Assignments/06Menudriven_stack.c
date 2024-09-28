@@ -13,12 +13,12 @@ void push(int num) {
 }
 
 void pop() {
-	int  x;
+	int  val;
     if (top == -1) {
         printf("Underflow\n");
     } else {
-    	x=stack[top];
-        printf("The popped item is %d.\n",x);
+    	val=stack[top];
+        printf("The popped item is %d.\n",val);
         top--;
     }
     
