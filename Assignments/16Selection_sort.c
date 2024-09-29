@@ -8,16 +8,16 @@ void main(){
     for(i=0;i<N;i++){
         scanf("%d",&arr[i]);
     }
-    for ( i = 1; i <=N-1; i++){   
-          min=i-1;
-          for ( j = i; j < N; j++){
+    for ( i = 0; i <N-1; i++){   
+          min=i;
+          for ( j = i+1; j <N; j++){
             if (arr[j]<arr[min]){
                min=j;
             }  
           }
-          if (min!=i-1){
-            temp=arr[i-1];
-            arr[i-1]= arr[min];
+          if (min!=i){
+            temp=arr[i];
+            arr[i]= arr[min];
             arr[min]=temp;
           }          
     }
