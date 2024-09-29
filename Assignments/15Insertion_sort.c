@@ -15,8 +15,7 @@ void main(){
             arr[j+1]=arr[j];
             j--;
         }
-        j=j+1;
-        arr[j]=temp;
+        arr[j+1]=temp;
     }
     
     printf("\nThe sorted array is: \n");
