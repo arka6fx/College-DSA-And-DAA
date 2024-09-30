@@ -2,11 +2,11 @@
 
 #define MAX 100
 
-void merge(int arr[], int beg, int mid, int end) {
-    int i = beg, j = mid + 1, k = beg;
+void merge(int arr[], int lb, int mid, int ub) {
+    int i = lb, j = mid + 1, k = lb;
     int temp[MAX];
 
-    while (i <= mid && j <= end) {
+    while (i <= mid && j <= ub) {
         if (arr[i] <= arr[j]) {
             temp[k] = arr[i];
             i = i + 1;
@@ -18,7 +18,7 @@ void merge(int arr[], int beg, int mid, int end) {
     }
 
     if (i > mid) {
-        while (j <= end) {
+        while (j <= ub) {
             temp[k] = arr[j];
             j = j + 1;
             k = k + 1;
@@ -31,17 +31,17 @@ void merge(int arr[], int beg, int mid, int end) {
         }
     }
 
-    for (k = beg; k <= end; k++) {
+    for (k = lb; k <= ub; k++) {
         arr[k] = temp[k];
     }
 }
 
-void mergeSort(int arr[], int beg, int end) {
-    if (beg < end) {
-        int mid = (beg + end) / 2;
-        mergeSort(arr, beg, mid);
-        mergeSort(arr, mid + 1, end);
-        merge(arr, beg, mid, end);
+void mergeSort(int arr[], int lb, int ub) {
+    if (lb < ub) {
+        int mid = (lb + ub) / 2;
+        mergeSort(arr, lb, mid);
+        mergeSort(arr, mid + 1, ub);
+        merge(arr, lb, mid, ub);
     }
 }
 

@@ -1,45 +1,40 @@
 #include <stdio.h>
 
-void quickSort(int arr[], int beg, int end);
-int partition(int arr[], int beg, int end);
+void quickSort(int arr[], int lb, int ub);
+int partition(int arr[], int lb, int ub);
 
-void quickSort(int arr[], int beg, int end) {
+void quickSort(int arr[], int lb, int ub) {
     int loc;
-    if (beg < end) {
-        loc = partition(arr, beg, end);
-        quickSort(arr, beg, loc - 1);  // Recursively sort the left partition
-        quickSort(arr, loc + 1, end);  // Recursively sort the right partition
+    if (lb < ub) {
+        loc = partition(arr, lb, ub);
+        quickSort(arr, lb, loc - 1);  
+        quickSort(arr, loc + 1, ub);  
     }
 }
 
-int partition(int arr[], int beg, int end) {
-    int pivot = arr[beg];  // Choose the first element as pivot
-    int left = beg;    // Start `left` from the next element
-    int right = end;       // `right` starts from the end of the array
+int partition(int arr[], int lb, int ub) {
+    int pivot = arr[lb];  
+    int start = lb + 1;    
+    int end = ub;       
 
-    while (left <= right) {
-        // Move `left` forward while elements are smaller or equal to pivot
-        while (left <= end && arr[left] <= pivot) {
-            left++;
+    while (start <= end) {
+        while (start <= end && arr[start] <= pivot) {
+            start++;
         }
-        // Move `right` backward while elements are larger than pivot
-        while (arr[right] > pivot) {
-            right--;
+        while (start <= end && arr[end] > pivot) {
+            end--;
         }
-        // If `left` is still less than `right`, swap the elements
-        if (left < right) {
-            int temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
+        if (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
         }
     }
 
-    // Place pivot in its correct position
-    int temp = arr[beg];
-    arr[beg] = arr[right];
-    arr[right] = temp;
+    arr[lb] = arr[end];
+    arr[end] = pivot;
 
-    return right;  // Return the index of the pivot
+    return end;  
 }
 
 int main() {
