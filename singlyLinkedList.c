@@ -12,19 +12,48 @@ void insertAtBeg();
 void insertAtEnd();
 int main()
 {
-    int n;
+    int n, choice, c;
     printf("\n\n Linked List : To create and display Singly Linked List :\n");
     printf("-------------------------------------------------------------\n");
     printf(" Input the number of nodes : ");
     scanf("%d", &n);
     createNodeList(n);
-    insertAtBeg();
-    insertAtEnd();
-    int c = countList();
-    printf("\n Number of nodes : %d\n", c);
-    printf("\nData entered in the list : \n");
-    displayList();
-    return 0;
+
+    while (1)
+    {
+        printf("\nMenu: \n");
+        printf("1.insertAtBeg\n");
+        printf("2.insertAtEnd\n");
+        printf("3.displayList\n");
+        printf("4.countList\n");
+        printf("5.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            insertAtBeg();
+            break;
+        case 2:
+            insertAtEnd();
+            break;
+        case 3:
+            printf("\nData entered in the list : \n");
+            displayList();
+            break;
+        case 4:
+            c = countList();
+            printf("\nNumber of nodes : %d\n", c);
+            break;
+        case 5:
+            printf("Exiting!");
+            return 0;
+
+        default:
+            printf("Invalid choice!");
+            break;
+        }
+    }
 }
 void createNodeList(int n)
 {
@@ -63,41 +92,45 @@ void createNodeList(int n)
     }
 }
 
-void insertAtBeg(){
-    struct node *newNode ;
-    newNode = (struct node*)malloc(sizeof(struct node));
+void insertAtBeg()
+{
+    struct node *newNode;
+    newNode = (struct node *)malloc(sizeof(struct node));
     printf("Enter the value to insert:");
-    scanf("%d",&newNode->num);
-    if(stnode==NULL){
-        stnode=newNode;
-        newNode->nextptr=NULL;
+    scanf("%d", &newNode->num);
+    if (stnode == NULL)
+    {
+        stnode = newNode;
+        newNode->nextptr = NULL;
     }
-    else{
-        newNode->nextptr=stnode;
-        stnode=newNode;
+    else
+    {
+        newNode->nextptr = stnode;
+        stnode = newNode;
     }
-
 }
-void insertAtEnd(){
-    struct node *newNode,*temp;
-     newNode = (struct node*)malloc(sizeof(struct node));
+void insertAtEnd()
+{
+    struct node *newNode, *temp;
+    newNode = (struct node *)malloc(sizeof(struct node));
     printf("Enter the value to insert:");
-    scanf("%d",&newNode->num);
-    newNode->nextptr=NULL;
-    if(stnode==NULL){
-        stnode=newNode;
-        newNode->nextptr=NULL;
-    }
-    
-    else{
-         temp=stnode;
-         while(temp->nextptr!=0){
-            temp=temp->nextptr;
-         }
-         temp->nextptr=newNode;
-
+    scanf("%d", &newNode->num);
+    newNode->nextptr = NULL;
+    if (stnode == NULL)
+    { // stnode = head
+        stnode = newNode;
+        newNode->nextptr = NULL;
     }
 
+    else
+    {
+        temp = stnode;
+        while (temp->nextptr != 0)
+        {
+            temp = temp->nextptr;
+        }
+        temp->nextptr = newNode;
+    }
 }
 int countList()
 {
