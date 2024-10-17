@@ -9,6 +9,7 @@ void createNodeList(int n);
 int countList();
 void displayList();
 void insertAtBeg();
+void reverseList();
 void insertAtEnd();
 int main()
 {
@@ -26,7 +27,8 @@ int main()
         printf("2.insertAtEnd\n");
         printf("3.displayList\n");
         printf("4.countList\n");
-        printf("5.Exit\n");
+        printf("5.reverseList\n");
+        printf("6.Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -45,7 +47,10 @@ int main()
             c = countList();
             printf("\nNumber of nodes : %d\n", c);
             break;
-        case 5:
+        case 5: 
+            reverseList();
+            break;
+        case 6:
             printf("Exiting!");
             return 0;
 
@@ -163,4 +168,18 @@ void displayList()
         }
     }
     printf("NULL");
+}
+
+void reverseList(){
+    struct node *prevNode, *currNode, *nextNode;
+    prevNode=NULL;
+    currNode=nextNode=stnode;
+    while (currNode!=NULL)
+    {
+        nextNode=currNode->nextptr;
+        currNode->nextptr=prevNode;
+        prevNode=currNode;
+        currNode=nextNode;
+    }
+    stnode=prevNode;
 }
