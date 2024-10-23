@@ -5,15 +5,19 @@ struct node
     int num;
     struct node *nextptr;
 } *stnode;
-void createNodeList(int n);
+void createNodeList(int);
 int countList();
 void displayList();
 void insertAtBeg();
-void reverseList();
 void insertAtEnd();
+void insertAtSpecificPos(int);
+void deleteAtBeg();
+void deleteAtEnd();
+void deleteAtSpecificPos(int);
+void reverseList();
 int main()
 {
-    int n, choice, c;
+    int n, choice, c, pos;
     printf("\n\n Linked List : To create and display Singly Linked List :\n");
     printf("-------------------------------------------------------------\n");
     printf(" Input the number of nodes : ");
@@ -25,10 +29,14 @@ int main()
         printf("\nMenu: \n");
         printf("1.insertAtBeg\n");
         printf("2.insertAtEnd\n");
-        printf("3.displayList\n");
-        printf("4.countList\n");
-        printf("5.reverseList\n");
-        printf("6.Exit\n");
+        printf("3.insertAtSpecificPos\n");
+        printf("4.deleteAtBeg\n");
+        printf("5.deleteAtEnd\n");
+        printf("6.deleteAtSpecificPos\n");
+        printf("7.displayList\n");
+        printf("8.countList\n");
+        printf("9.reverseList\n");
+        printf("10.Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -40,17 +48,31 @@ int main()
             insertAtEnd();
             break;
         case 3:
+            printf("Enter the position of insertion of the node:");
+            scanf("%d", &pos);
+            insertAtSpecificPos(pos);
+        case 4:
+            deleteAtBeg();
+            break;
+        case 5:
+            deleteAtEnd();
+            break;
+        case 6:
+            printf("Enter the position of deletion of the node:");
+            scanf("%d", &pos);
+            deleteAtSpecificPos(pos);
+        case 7:
             printf("\nData entered in the list : \n");
             displayList();
             break;
-        case 4:
+        case 8:
             c = countList();
             printf("\nNumber of nodes : %d\n", c);
             break;
-        case 5: 
+        case 9:
             reverseList();
             break;
-        case 6:
+        case 10:
             printf("Exiting!");
             return 0;
 
@@ -137,6 +159,88 @@ void insertAtEnd()
         temp->nextptr = newNode;
     }
 }
+void insertAtSpecificPos(int pos)
+{
+    struct node *newNode, *temp;
+    newNode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value to insert:");
+    scanf("%d", &newNode->num);
+    newNode->nextptr = NULL;
+    if (stnode == NULL)
+    { // stnode = head
+        stnode = newNode;
+        newNode->nextptr = NULL;
+    }
+    else
+    {
+        temp = stnode;
+        int cnt = 1;
+        while (cnt < pos - 1)
+        {
+            temp = temp->nextptr;
+            cnt++;
+        }
+        newNode->nextptr = temp->nextptr;
+        temp->nextptr = newNode;
+    }
+}
+
+void deleteAtBeg()
+{
+    struct node *temp;
+    if (stnode == NULL)
+    {
+        printf(" List is empty.");
+    }
+    else
+    {
+
+        temp = stnode;
+        stnode = stnode->nextptr;
+        free(temp);
+    }
+}
+
+void deleteAtEnd()
+{
+    struct node *temp, *prevNode;
+    if (stnode == NULL)
+    {
+        printf(" List is empty.");
+    }
+    else
+    {
+        while (temp->nextptr != NULL)
+        {
+            prevNode = temp;
+            temp = temp->nextptr;
+        }
+        prevNode->nextptr = NULL;
+        free(temp);
+    }
+}
+void deleteAtSpecificPos(int pos)
+{
+    struct node *newNode, *temp, *nextNode;
+    if (stnode == NULL)
+    {
+        printf(" List is empty.");
+    }
+    else
+    {
+        temp = stnode;
+        int cnt = 1;
+        while (cnt < pos - 1)
+        {
+            temp = temp->nextptr;
+            cnt++;
+        }
+        nextNode = temp->nextptr;
+        temp->nextptr = nextNode->nextptr;
+        free(nextNode);
+    }
+}
+
 int countList()
 {
     int ctr = 0;
@@ -170,16 +274,17 @@ void displayList()
     printf("NULL");
 }
 
-void reverseList(){
+void reverseList()
+{
     struct node *prevNode, *currNode, *nextNode;
-    prevNode=NULL;
-    currNode=nextNode=stnode;
-    while (currNode!=NULL)
+    prevNode = NULL;
+    currNode = nextNode = stnode;
+    while (currNode != NULL)
     {
-        nextNode=currNode->nextptr;
-        currNode->nextptr=prevNode;
-        prevNode=currNode;
-        currNode=nextNode;
+        nextNode = currNode->nextptr;
+        currNode->nextptr = prevNode;
+        prevNode = currNode;
+        currNode = nextNode;
     }
-    stnode=prevNode;
+    stnode = prevNode;
 }
