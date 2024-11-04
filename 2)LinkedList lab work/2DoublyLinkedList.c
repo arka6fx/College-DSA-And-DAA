@@ -34,7 +34,7 @@ void createNodeList(int n)
 
 void insertAtBeg()
 {
-    struct node *newNode;
+    struct node *newNode; 
     newNode = (struct node *)malloc(sizeof(struct node));
     printf("Enter the value to insert:");
     scanf("%d", &newNode->data);

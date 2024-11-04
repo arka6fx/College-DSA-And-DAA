@@ -24,7 +24,7 @@ int main()
                 }
             }
         }
-        brr[i] = c;
+        brr[i] = c;//stores frequency
     }
     for (i = 0; i < n; i++)
     {
