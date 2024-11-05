@@ -182,12 +182,14 @@ void displayList()
     {
         tmp = head;
         printf("Linked List :\n");
+        printf("-->");
         while (tmp->next != head)
         {
             printf("%d-->", tmp->data);
             tmp = tmp->next;
         }
         printf("%d", tmp->data);
+        printf("-->");
     }
 }
 

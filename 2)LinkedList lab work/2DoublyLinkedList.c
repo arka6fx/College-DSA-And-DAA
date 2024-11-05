@@ -103,7 +103,7 @@ void insertAtSpecificPos(int pos)
 }
 
 void deleteAtBeg()
-{
+{       
     struct node *temp;
     if (head == NULL)
     {
@@ -180,6 +180,7 @@ void displayList()
     {
         tmp = head;
         printf("Linked List :\n");
+        printf("NULL<-->");
         while (tmp != NULL)
         {
             printf("%d<-->", tmp->data);
