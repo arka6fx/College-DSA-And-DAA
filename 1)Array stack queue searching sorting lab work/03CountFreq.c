@@ -24,7 +24,7 @@ int main()
                 }
             }
         }
-        brr[i] = c;//stores frequency
+        brr[i] = c; // stores frequency
     }
     for (i = 0; i < n; i++)
     {
@@ -33,6 +33,21 @@ int main()
             printf("no of %d is %d\n", arr[i], brr[i]);
         }
     }
-
+    printf("\nDuplicate elements: \n");
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] != -1 && brr[i] > 1)
+        {
+            printf("%d->%d\n", arr[i], brr[i]);
+        }
+    }
+    printf("Unique elements: \n");
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] != -1 && brr[i] == 1)
+        {
+            printf("%d->%d\n", arr[i], brr[i]);
+        }
+    }
     return 0;
 }

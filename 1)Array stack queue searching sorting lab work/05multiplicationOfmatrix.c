@@ -1,6 +1,6 @@
 #include <stdio.h>
 int main() {
-    int m,n,p,q,i,j,k,result;
+    int m,n,p,q,i,j,k;
     printf("Enter the number of rows of matrix1: ");
     scanf("%d", &m);
     printf("Enter the number of columns of matrix1: ");
@@ -25,20 +25,19 @@ int main() {
         }
     }
     for (i = 0; i < m; i++) {
-        
         for (j = 0; j < q; j++) {
-            result=0;
+            mul[i][j]=0;
             for ( k = 0; k < n; k++)
             {
-               result+= arr1[i][k]*arr2[k][j];
+               mul[i][j]+= arr1[i][k]*arr2[k][j];
             }
-            mul[i][j]=result;
+           
         }
     }
     
     
 
-    printf("\nYour matrix after multiplying:\n");
+    printf("\nYour matrix after multiplication:\n");
     for (i = 0; i < m; i++) {
         for (j = 0; j < q; j++) {
             printf("%d ", mul[i][j]);
