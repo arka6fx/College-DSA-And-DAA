@@ -8,12 +8,12 @@ struct node {
 
 struct node* top = NULL;
 
-// Check if the stack is empty
+
 int isEmpty() {
     return top == NULL;
 }
 
-// Push an element onto the stack
+
 void push(int data) {
     struct node* newNode = malloc(sizeof(newNode));
     if (newNode == NULL) {
@@ -25,7 +25,6 @@ void push(int data) {
     top = newNode;
 }
 
-// Pop an element from the stack
 int pop() {
     if (isEmpty()) {
         printf("Stack Underflow.\n");
@@ -38,7 +37,7 @@ int pop() {
     return val;
 }
 
-// Peek at the top element of the stack
+
 int peek() {
     if (isEmpty()) {
         printf("Stack Underflow.\n");
@@ -47,7 +46,7 @@ int peek() {
     return top->data;
 }
 
-// Print all elements in the stack
+
 void print() {
     if (isEmpty()) {
         printf("Stack Underflow.\n");
@@ -62,7 +61,7 @@ void print() {
     printf("\n");
 }
 
-// Main function to demonstrate stack operations
+
 int main() {
     int choice, data;
 
@@ -92,7 +91,7 @@ int main() {
                 print();
                 break;
             case 5:
-                exit(0);
+                exit(0);//	Successful Termination ---> Indicates the program ran successfully.
             default:
                 printf("Wrong choice\n");
         }

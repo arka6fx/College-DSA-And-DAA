@@ -23,7 +23,7 @@ int pop()
     if (top == -1)
     {
         printf("Stack Underflow\n");
-        exit(1); // means abnormal termination of the program
+        exit(1); // Unsuccessful Termination -->Indicates an error or abnormal termination.
     }
     else
     {
@@ -80,7 +80,7 @@ int main()
             break;
         case 4:
             printf("Exiting...\n");
-            exit(1);
+            exit(0);
         default:
             printf("Wrong choice\n");
         }
