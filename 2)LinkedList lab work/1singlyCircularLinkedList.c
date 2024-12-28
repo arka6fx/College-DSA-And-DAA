@@ -37,7 +37,7 @@ void insertAtBeg()
     printf("Enter the value to insert:");
     scanf("%d", &newNode->data);
     newNode->next = NULL;
-    if (head = NULL)
+    if (head == NULL)
     {
         head = tail = newNode;
         tail->next = head;
@@ -58,7 +58,7 @@ void insertAtEnd()
     printf("Enter the value to insert:");
     scanf("%d", &newNode->data);
     newNode->next = NULL;
-    if (head = NULL)
+    if (head == NULL)
     {
         head = tail = newNode;
         tail->next = head;
@@ -79,7 +79,7 @@ void insertAtSpecificPos(int pos)
     printf("Enter the value to insert:");
     scanf("%d", &newNode->data);
     newNode->next = NULL;
-    if (head = NULL)
+    if (head == NULL)
     {
         head = tail = newNode;
         tail->next = head;
@@ -176,22 +176,21 @@ void displayList()
     struct node *tmp;
     if (head == NULL)
     {
-        printf(" List is empty.");
+        printf("List is empty.\n");
     }
     else
     {
         tmp = head;
-        printf("Linked List :\n");
-        printf("-->");
-        while (tmp->next != head)
+        printf("Linked List: ");
+        do
         {
-            printf("%d-->", tmp->data);
+            printf("%d --> ", tmp->data);
             tmp = tmp->next;
-        }
-        printf("%d", tmp->data);
-        printf("-->");
+        } while (tmp != head);
+        printf("(Head)\n");
     }
 }
+
 
 void reverseList()
 {
