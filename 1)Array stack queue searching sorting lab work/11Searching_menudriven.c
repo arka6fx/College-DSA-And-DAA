@@ -17,17 +17,17 @@ void binarySearch(int arr[], int n) {
     int x;
     printf("Enter the element to search: ");
         scanf("%d", &x);
-    int low = 0, high = n - 1;
-    while(low <= high) {
-        int mid = (low + high) / 2;
+    int beg = 0, end = n - 1;
+    while(beg <= end) {
+        int mid = (beg + end) / 2;
         if(arr[mid] == x) {
             printf("Element %d found at index %d\n", x, mid);
             return;
         }
         if(arr[mid] < x) {
-            low = mid + 1;
+            beg = mid + 1;
         } else {
-            high = mid - 1;
+            end = mid - 1;
         }
     }
     printf("Element %d not found in the array\n", x);

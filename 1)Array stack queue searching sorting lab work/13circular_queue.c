@@ -1,99 +1,130 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define MAX 5
 int queue[MAX];
-int rear =-1;
+int rear = -1;
 int front = -1;
 
-void enqueue(int val){
-	if(((rear+1)%MAX) == front){
+void enqueue(int val)
+{
+	if (((rear + 1) % MAX) == front)
+	{
 		printf("Overflow");
 		return;
 	}
-	else if(rear==-1 && front==-1){
-		rear=front=0;
+	else if (rear == -1 && front == -1)
+	{
+		rear = front = 0;
 	}
-	else{
-		rear=(rear+1)%MAX;
+	else
+	{
+		rear = (rear + 1) % MAX;
 	}
-	queue[rear]=val;
+	queue[rear] = val;
 }
 
-void dequeue(){
-	
-	if(rear==-1 && front==-1){
+int dequeue()
+{
+	int data;
+	if (rear == -1 && front == -1)
+	{
 		printf("Underflow");
-		
+		exit(1);
 	}
-	else if (rear == front){
-		printf("\nThe dequeued element is %d",queue[front]);
-		rear=front=-1;
+	else if (rear == front)
+	{
+		data = queue[front];
+		rear = front = -1;
 	}
-	else{
-		printf("The dequeued element is %d",queue[front]);
-	    front=(front+1)%MAX;
+	else
+	{
+		data = queue[front];
+		front++;
 	}
-	
+	return data;
 }
 
-void display(){
-	
-	int i=front;
-	int v,j,k;
-	int count=0;
-	if(rear==-1 && front==-1){
-		printf("Underflow\n");
-		printf("Your Circular queue is: ");
-		for ( k = 0; k < 6; k++)
+// void display()
+// {
+//     if (front == -1 && rear == -1)
+//     {
+//         printf("Queue is empty\n");
+//         return;
+//     }
+
+//     printf("Queue elements are: ");
+//     int i = front;
+//     while (1)
+//     {
+//         printf("%d ", queue[i]);
+//         if (i == rear)
+//             break;
+//         i = (i + 1) % MAX;
+//     }
+//     printf("\n");
+// }
+void display()
+{
+	printf("Queue state:\n");
+	for (int i = 0; i < MAX; i++)
+	{
+		if (front == -1 && rear == -1) // Queue is empty
 		{
 			printf("* ");
 		}
-		
-		return;
+		else if (front <= rear) // Non-wrapped condition
+		{
+			if (i >= front && i <= rear)
+				printf("%d ", queue[i]);
+			else
+				printf("* ");
+		}
+		else // Wrapped condition
+		{
+			if (i >= front || i <= rear)
+				printf("%d ", queue[i]);
+			else
+				printf("* ");
+		}
 	}
-	
-	while(i!=rear){
-		count++;
-		i=(i+1)%MAX;
-	}
-	v= count+1;
-	i=front;
-	printf("Your Circular queue is: ");
-	for(j=0;j<5-v;j++){
-		printf("* ");
-	}
-	while( i!=rear){
-		printf("%d ",queue[i] );
-		i=(i+1)%MAX ;
-		
-	}
-	printf("%d ",queue[rear] );
+	printf("\n");
 }
-int main(){
-	int val,choice;
-	
-	while(1){
-		 printf("\nMenu:\n");
-	     printf("1.Insert\n");
-	     printf("2.Delete\n");
-	     printf("3.Display\n");
-	     printf("4.Exit\n");
-	     printf("Enter your choice: \n");
-	     scanf("%d",&choice);
-	     switch(choice){
-	     
-		case 1: printf("Enter the value you want to enqueue: \n");
-		        scanf("%d",&val);
-		        enqueue(val);
-		        break;
-		case 2: dequeue();
-	        	break; 
-		case 3: display();
-		        break;
-		case 4: return 0;
-		default: printf("Enter valid choice ");
-		         break;}
-						       
-	
+
+int main()
+{
+	int val, choice;
+
+	while (1)
+	{
+		printf("\nMenu:\n");
+		printf("1.Insert\n");
+		printf("2.Delete\n");
+		printf("3.Display\n");
+		printf("4.Exit\n");
+		printf("Enter your choice: \n");
+		scanf("%d", &choice);
+		switch (choice)
+		{
+
+		case 1:
+			printf("Enter the value you want to enqueue: \n");
+			scanf("%d", &val);
+			enqueue(val);
+			break;
+		case 2:
+			val = dequeue();
+			printf("The dequeued element is %d", val);
+			break;
+		case 3:
+			display();
+			break;
+		case 4:
+			printf("Exiting...");
+			exit(0);
+		default:
+			printf("Enter valid choice ");
+			break;
+		}
 	}
 	return 0;
 }
