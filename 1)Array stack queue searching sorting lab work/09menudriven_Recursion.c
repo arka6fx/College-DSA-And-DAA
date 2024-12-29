@@ -39,7 +39,7 @@ int main() {
                 break;
 
             case 2:
-                printf("Enter the term no. upto which you want your fibonacci series: ");
+                printf("Enter the term no. of terms of fibonacci series: ");
                 scanf("%d", &term);
                 printf("Your fibonacci series is: ");
                 for(i=0;i<term;i++){
