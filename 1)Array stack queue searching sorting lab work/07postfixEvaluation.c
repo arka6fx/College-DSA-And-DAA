@@ -21,7 +21,7 @@ int pop() {
     }
 }
 
-int evaluateToPostfix(char postfix[]) {
+int evaluatePostfix(char postfix[]) {
     int i;
     int a, b;
     for (i = 0; postfix[i] != '\0'; i++) {
@@ -49,6 +49,6 @@ int main() {
     char postfix[MAX];
     printf("Enter the postfix expression: ");
     scanf("%s", postfix);
-    printf("The Evaluation of postfix expression is: %d\n", evaluateToPostfix(postfix));
+    printf("The Evaluation of postfix expression is: %d\n", evaluatePostfix(postfix));
     return 0;
 }
