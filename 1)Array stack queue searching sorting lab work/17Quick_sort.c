@@ -14,7 +14,7 @@ void quickSort(int arr[], int lb, int ub) {
 
 int partition(int arr[], int lb, int ub) {
     int pivot = arr[lb];  
-    int start = lb + 1;    
+    int start = lb;    
     int end = ub;       
 
     while (start <= end) {
