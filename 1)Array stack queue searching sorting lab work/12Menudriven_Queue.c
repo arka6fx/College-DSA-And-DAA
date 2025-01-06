@@ -39,7 +39,7 @@ int dequeue()
    else
    {
       data = queue[front];
-      front=(front+1)%MAX;
+      front=front+1;
    }
    return data;
 
