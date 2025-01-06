@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define N 5
-int stack[N];
+#define MAX 5
+int stack[MAX];
 int top = -1; // indicates stack is empty
 
 void push(int num)
 {
-    if (top == N - 1)
+    if (top == MAX - 1)
     {
         printf("Stack Overflow\n");
     }
