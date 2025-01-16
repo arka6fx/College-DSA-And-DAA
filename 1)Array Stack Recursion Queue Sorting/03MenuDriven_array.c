@@ -1,86 +1,79 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define N 50
-int insert_element(int arr[], int n)
-{
-    int p, pos, val, i;
-    printf("Enter the position to insert the element (1 to %d): ", n + 1);
-    scanf("%d", &p);
-    pos = p - 1;
-    for (i = n - 1; i >= pos; i--)
-    {
-        arr[i + 1] = arr[i];
-    }
-    printf("Enter the number to insert: ");
-    scanf("%d", &val);
-    arr[pos] = val;
-    n++;
-    return n;
+
+int insert(int arr[],int n){
+	int data,pos,i;
+	printf("Enter the Data: ");
+	scanf("%d",&data);
+	printf("Enter the Position: ");
+	scanf("%d",&pos);
+	for(i=n;i>pos;i--){
+		arr[i]=arr[i-1];
+	}
+	arr[pos]=data;
+	n++;
+	return n;	
 }
 
-int delete_element(int arr[], int n)
-{
-    int p, pos, i;
-    printf("Enter the position to delete an element (1 to %d): ", n);
-    scanf("%d", &p);
-    pos = p - 1;
-    for (i = pos; i < n - 1; i++)
-    {
-        arr[i] = arr[i + 1];
-    }
-    n--;
-    return n;
+int delete(int arr[],int n ){
+	int pos,i;
+	printf("Enter the Position:");
+	scanf("%d",&pos);
+	for(i=pos;i<n-1;i++){
+		arr[i]=arr[i+1];
+	}
+	n--;
+	return n;
 }
 
-void display_array(int arr[], int n)
-{
-    printf("Your array is: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+void display(int arr[],int n){
+	int i;
+	for(i=0;i<n;i++){
+		printf("%d ",arr[i]);
+	}
 }
 
 int main()
 {
-    int arr[N], n, choice;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-    printf("Enter the elements of the array: ");
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &arr[i]);
+    int arr[N],choice,n,i;
+    printf("\n-----Array for Organizing & Managing Data-----\n");
+    printf("Enter the no. of elements: ");
+    scanf("%d",&n);
+    printf("Enter the elements: ");
+    for(i=0;i<n;i++){
+        scanf("%d",&arr[i]);
     }
-
-    while (1)
-    {
-        printf("\nMenu:\n");
-        printf("1. Insert an element\n");
-        printf("2. Delete an element\n");
-        printf("3. Display the array\n");
-        printf("0. Exit\n");
+    while(1){
+        printf("\nMenu: \n");
+        printf("1. Insert an Element\n");
+        printf("2. Delete an Element\n");
+        printf("3. Display the Array\n");
+        printf("4. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
-
-        switch (choice)
-        {
-        case 1:
-            n = insert_element(arr, n);
-            break;
-        case 2:
-            n = delete_element(arr, n);
-            break;
-        case 3:
-            display_array(arr, n);
-            break;
-        case 0:
-            printf("Exiting the program.\n");
-            return 0;
-        default:
-            printf("Invalid choice! Please try again.\n");
+        scanf("%d",&choice);
+        
+        switch(choice){
+        	case 1: n = insert(arr,n);       	        
+        	        break;
+        	case 2: n = delete(arr,n);
+			        break;
+			case 3: display(arr,n);
+			        break;
+			case 4: printf("Quitting");
+			        exit(1);
+			default: printf("Invalid Choice! Try again ");				        
+            
         }
+        
+       
     }
+    
+    
+    
+    
+    
+    
 
     return 0;
 }
