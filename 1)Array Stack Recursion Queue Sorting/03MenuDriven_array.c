@@ -61,7 +61,7 @@ int main()
 			case 3: display(arr,n);
 			        break;
 			case 4: printf("Quitting");
-			        exit(1);
+			        exit(0);
 			default: printf("Invalid Choice! Try again ");				        
             
         }
