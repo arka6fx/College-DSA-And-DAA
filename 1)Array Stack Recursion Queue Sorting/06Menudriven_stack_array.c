@@ -2,89 +2,93 @@
 #include <stdlib.h>
 #define MAX 5
 int stack[MAX];
-int top = -1; // indicates stack is empty
+int top = -1;
 
-void push(int num)
-{
-    if (top == MAX - 1)
-    {
-        printf("Stack Overflow\n");
-    }
-    else
-    {
-        top++;
-        stack[top] = num;
-    }
+void push(int data){
+	if(top == MAX-1){
+		printf("Stack Overflow");
+	}
+	else {
+		top=top+1;
+		stack[top]=data;
+	}
+	return;
 }
 
-int pop()
-{
-    int data;
-    if (top == -1)
-    {
-        printf("Stack Underflow\n");
-        exit(1); // Unsuccessful Termination -->Indicates an error or abnormal termination.
-    }
-    else
-    {
-        data = stack[top];
-        top--;
-    }
-    return data;
+int pop(){
+	int data;
+	if(top==-1){
+		printf("Stack Underflow");
+		exit(1);
+	}
+	else{
+		data = stack[top];
+		top=top-1;
+	}
+	
+	return data;
 }
 
-void display()
-{
-    if (top == -1)
-    {
-        printf("Stack is empty\n");
-        return;
-    }
-    printf("Your stack is:\n");
-    int i;
-    for (i = top; i >= 0; i--)
-    {
-        printf("%d \n", stack[i]);
-    }
-    printf("\n");
+void display(){
+	int i ;
+	if(top==-1){
+		printf("Stack Underflow");
+	}
+	for(i=0;i<=top;i++) {
+		printf("%d ",stack[i]);
+	}
+}
+
+void IsEmpty(){
+	if(top==-1){
+		printf("True");
+	}
+}
+
+void IsFull(){
+	if(top= MAX-1){
+		printf("True");
+	}
 }
 
 int main()
 {
-    int  num, ch;
-
-    while (1)
-    {
-        printf("Menu:\n");
-        printf("1. Push\n");
-        printf("2. Pop\n");
+    int data,choice;
+    printf("\n-----Implementation of Stack using Array-----\n");
+    
+    while(1){
+        printf("\n Menu: \n");
+        printf("1. Insert an Element\n");
+        printf("2. Delete an Element\n");
         printf("3. Display\n");
-        printf("4. Exit\n");
-        printf("Please enter your choice: ");
-
-        scanf("%d", &ch);
-
-        switch (ch)
-        {
-        case 1:
-            printf("Enter the element to be pushed: ");
-            scanf("%d", &num);
-            push(num);
-            break;
-        case 2:
-            num = pop();
-            printf("The popped element is %d.\n", num);
-            break;
-        case 3:
-            display();
-            break;
-        case 4:
-            printf("Exiting...\n");
-            exit(0);
-        default:
-            printf("Wrong choice\n");
+        printf("4. Is Stack Empty?\n");
+        printf("5. Is Stck Full?\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+        
+        switch(choice){
+        	case 1: printf("Enter the Data: ");
+			        scanf("%d",&data);
+					push(data);       	        
+        	        break;
+        	case 2: data = pop();
+        	        printf("Poped data is %d",data);        	
+			        break;
+			case 3: display();
+			        break;
+			case 4: IsEmpty();
+			        break; 
+			case 5: IsFull();
+			        break;			      		       
+			case 6: printf("Quitting");
+			        exit(0);
+			default: printf("Invalid Choice! Try again ");				        
+            
         }
+               
     }
+      
 
     return 0;
 }
