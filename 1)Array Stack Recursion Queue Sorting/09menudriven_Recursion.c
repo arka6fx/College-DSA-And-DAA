@@ -1,69 +1,58 @@
 #include <stdio.h>
 
-
-int fact(int n) {
-    if (n == 0)
-        return 1;
-    else
-        return n * fact(n - 1);
-}
-int fibo(int n) {
-    if(n==0) return 0;
-    else if(n==1) return 1;
-    else  return fibo(n-1)+ fibo(n-2);
-}
-int gcd(int a, int b) {
-    if (a%b == 0)
-        return b;
-    else
-        return gcd(b, a % b);
-}
-int main() {
-    int choice, num1,term,i, num2;
-    while (1) {
-        printf("\nMenu:\n");
-        printf("1. Calculate Factorial\n");
-        printf("2. Calculate Fibonacci\n");
-        printf("3. Calculate GCD\n");
-        printf("4. Exit\n");
-        printf("Enter your choice (1-4): ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-            case 1:
-                printf("Enter a non-negative integer: ");
-                scanf("%d", &num1);
-               
-                printf("Factorial of %d is %d\n", num1, fact(num1));
-                
-                break;
-
-            case 2:
-                printf("Enter the number of terms of the fibonacci series: ");
-                scanf("%d", &term);
-                printf("Your fibonacci series is: ");
-                for(i=0;i<term;i++){
-                    printf("%d ",fibo(i));
-                }
-                break;
-
-            case 3:
-                printf("Enter two non-negative integers: ");
-                scanf("%d %d", &num1, &num2);
-         
-                printf("GCD of %d and %d is %d\n", num1, num2, gcd(num1, num2));
-                
-                break;
-
-            case 4:
-                printf("Exiting...\n");
-                return 0;
-
-            default:
-                printf("Invalid choice. Please enter a number between 1 and 4.\n");
-        }
-    }
-
-    return 0;
+int Fact(int n){
+	if(n==0) return 1;
+	else     return n*Fact(n-1);
 }
 
+int Fibo(int n){
+	if(n==0) return 0;
+	else if(n==1) return 1;
+	else return Fibo(n-1)+Fibo(n-2);
+}
+
+int GCD(int a,int b){
+	if(a%b==0) return b;
+	else GCD(b,a%b);
+}
+
+
+int main(){
+	int choice,num,i,num1;
+	
+	while(1){
+		printf("\n---Menu---\n");
+		printf("1. Calculate Factorial\n");
+		printf("2. Print Fibonacci Series\n");
+		printf("3. Calculate GCD\n");
+		printf("4. Exit\n");
+		printf("Enter your choice: ");
+		scanf("%d",&choice);
+		
+		switch(choice){
+			case 1: printf("Enter a Number: ");
+			        scanf("%d",&num);
+			        printf("Factorial of %d is %d",num ,Fact(num));
+			        break;
+			case 2: printf("Enter Term Number(a0,a1,a2...aN): ");
+			        scanf("%d",&num);
+			        printf("Fibonacci Series\n");
+			        for(i=0;i<=num;i++){
+			        	printf("%d ",Fibo(i));
+					}
+			        break;
+			case 3:	printf("Enter Two Numbers: ");
+			        scanf("%d %d",&num, &num1);
+			        printf(" GCD(%d,%d) = %d" ,num, num1, GCD(num,num1));
+			        break;
+			case 4: printf("Quitting");
+			        exit(0);
+					        
+			default: printf("Invalid Choice! Please Try Again");			        
+		}
+		
+		
+	}
+	
+	return 0;
+}
