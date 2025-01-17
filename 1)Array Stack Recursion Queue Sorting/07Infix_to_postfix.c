@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<ctype.h>
-#define MAX 100
+#define MAX 50
 char stack[MAX];
 int top = -1;
 
@@ -83,6 +83,6 @@ int main(){
 	printf("Enter Infix String: ");
 	scanf("%s",infix);
 	infixToPostfix(infix,postfix);
-	printf("Postfi Expression is: %s",postfix);
+	printf("Postfix Expression is: %s",postfix);
 	return 0;
 }
