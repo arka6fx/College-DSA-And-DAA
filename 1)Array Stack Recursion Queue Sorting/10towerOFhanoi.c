@@ -1,17 +1,18 @@
 #include<stdio.h>
-void tower(int n,char Beg,char Aux,char End){
-	 if(n<=0) printf("Invalid no. of disk taken!");
-	 else if (n==1) printf("Move form %c--->%c\n", Beg, End);
-	 else{
-	 	tower(n-1,Beg,End,Aux);
-	 	tower(1,Beg,Aux,End);
-	 	tower(n-1,Aux,Beg,End);
-	 }
+
+Tower(int n,char Beg,char Aux,char End){
+	if(n==1) printf("Move %c--->%c\n",Beg,End);
+	else{
+		Tower(n-1,Beg,End,Aux);
+		Tower(1,Beg,Aux,End);
+		Tower(n-1,Aux,Beg,End);		
+	}
 }
 int main(){
 	int n;
-	printf("Enter the number of disk:");
+	printf("Enter the no. of Disks: ");
 	scanf("%d",&n);
-	printf("The tower of hanoi of %d disk:\n",n );
-	tower(n,'a','b','c');
+	printf("Steps to Solve Tower of Hanoi consisting of %d Disks:  ",n);
+	Tower(n,'a','b','c');
+	return 0;
 }
