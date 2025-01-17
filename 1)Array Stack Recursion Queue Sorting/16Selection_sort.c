@@ -1,29 +1,33 @@
 #include<stdio.h>
-void main(){
-    int N,i,j,min,temp;
-    printf("Enter the size of array: ");
-    scanf("%d",&N);
-    int arr[N];
-    printf("\nEnter the elements of the array: \n");
-    for(i=0;i<N;i++){
+
+int main(){
+  int n,i,j,min,temp;
+  printf("Enter the no. of Elements: ");
+  scanf("%d",&n);
+  int arr[n];
+  printf("Enter the Elements Of the Array: ");
+    for(i=0;i<n;i++){
         scanf("%d",&arr[i]);
     }
-    for ( i = 0; i <N-1; i++){   
-          min=i;
-          for ( j = i+1; j <N; j++){
-            if (arr[j]<arr[min]){
-               min=j;
-            }  
-          }
-          if (min!=i){
-            temp=arr[i];
-            arr[i]= arr[min];
-            arr[min]=temp;
-          }          
-    }
-    printf("\nThe sorted array is: \n");
-    for(i=0;i<N;i++){
+  	
+  	// Selection Sort 
+  	for(i=0;i<=n-2;i++){
+  		min=i;
+  		for(j=i+1;j<=n-1;j++){
+  			if(arr[j]<arr[min]){
+  				min=j;
+			  }
+		  }
+		if(min!=i){
+			temp = arr[i];
+			arr[i] = arr[min];
+			arr[min] = temp;
+		}  
+ 		
+	  }
+  	
+	printf("\nThe Sorted Array:\n");
+    for(i=0;i<n;i++){
         printf("%d ",arr[i]);
     }
-    
 }
