@@ -1,12 +1,14 @@
 #include<stdio.h>
+int partition(int arr[],int lb,int ub);
+void quickSort(int arr[],int lb,int ub);
 
-void quicksort(int arr[],int lb,int ub){
+void quickSort(int arr[],int lb,int ub){
 	int loc;
 	if(lb>=ub) return;
 	else{
 	   loc = partition(arr,lb,ub);
-	   quicksort(arr,lb,loc-1);
-	   quicksort(arr,loc+1,ub);	   	
+	   quickSort(arr,lb,loc-1);
+	   quickSort(arr,loc+1,ub);	   	
 	}
 }
 
@@ -32,7 +34,7 @@ int partition(int arr[],int lb,int ub){
 	return end;
 }
 int main(){
-  int n,i,j,min,temp;
+  int n,i;
   printf("Enter the no. of Elements: ");
   scanf("%d",&n);
   int arr[n];
@@ -41,7 +43,7 @@ int main(){
         scanf("%d",&arr[i]);
     }
   	
-    quicksort(arr,0,n-1);
+    quickSort(arr,0,n-1);
   	
 	printf("\nThe Sorted Array:\n");
     for(i=0;i<n;i++){
