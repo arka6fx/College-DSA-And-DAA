@@ -32,7 +32,7 @@ int isoperator(char ch)
 
 int precedence(char ch)
 {
-	if (ch == "^")
+	if (ch == '^')
 		return 3;
 	else if (ch == '/' || ch == '%' || ch == '*')
 		return 2;
@@ -44,7 +44,6 @@ int precedence(char ch)
 
 void infixToPostfix(char infix[], char postfix[]){
 	int i, j = 0;
-	char ch;
 	for (i = 0; infix[i] != '\0'; i++){
 		// operand
 		if (isalnum(infix[i])){
