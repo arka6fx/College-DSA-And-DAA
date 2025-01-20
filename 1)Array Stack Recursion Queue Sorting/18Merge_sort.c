@@ -47,8 +47,7 @@ void merge(int arr[], int lb, int mid, int ub){
 	}
 }
 
-int main()
-{
+int main(){
 	int n, i;
 	printf("Enter the no. of Elements: ");
 	scanf("%d", &n);
