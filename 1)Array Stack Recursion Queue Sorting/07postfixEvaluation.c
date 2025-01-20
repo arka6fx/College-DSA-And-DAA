@@ -5,46 +5,36 @@
 int stack[MAX];
 int top = -1;
 
-void push(int data)
-{
-	if (top == MAX - 1)
-	{
+void push(int data){
+	if (top == MAX - 1){
 		printf("Stack Overflow");
 		exit(1);
 	}
-	else
-	{
+	else{
 		stack[++top] = data;
 	}
 }
 
-int pop()
-{
-	if (top == -1)
-	{
+int pop(){
+	if (top == -1){
 		printf("Stack Underflow");
 		exit(1);
 	}
-	else
-	{
+	else{
 		return stack[top--];
 	}
 }
 
 int postfixEval(char postfix[]){
 	int i, a, b;
-	for (i = 0; postfix[i] != '\0'; i++)
-	{
-		if (isdigit(postfix[i]))
-		{
+	for (i = 0; postfix[i] != '\0'; i++){
+		if (isdigit(postfix[i])){
 			push(postfix[i] - '0');
 		}
-		else
-		{
+		else{
 			a = pop();
 			b = pop();
-			switch (postfix[i])
-			{
+			switch (postfix[i]){
 			case '^':
 				push(b ^ a);
 				break;
