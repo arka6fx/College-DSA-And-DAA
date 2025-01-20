@@ -60,8 +60,7 @@ void IsFull(){
 	}
 }
 
-void IsEmpty()
-{
+void IsEmpty(){
 	if (rear == -1 && front == -1){
 		printf("True");
 	}
