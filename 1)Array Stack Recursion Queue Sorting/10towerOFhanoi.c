@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-Tower(int n, char Beg, char Aux, char End){
+void Tower(int n, char Beg, char Aux, char End){
 	if (n == 1)
 		printf("Move %c--->%c\n", Beg, End);
 	else{
