@@ -1,65 +1,46 @@
 //18/02/25
 #include <stdio.h>
-#include <stdlib.h>
 
-void bubbleSort(int arr[], int n){
-	int flag, temp, i, j;
+// Binary Search using Recursion
+int binarySearch(int arr[], int low, int high, int key) {
+    if (low > high)
+        return -1; // Base case: Element not found
 
-	for (i = 1; i <= n - 1; i++){
+    int mid = low + (high - low) / 2;
 
-		flag = 0; // marks the pass where there is no swapping
-		for (j = 1; j <= n - i; j++){
-			if (arr[j - 1] > arr[j]){
-				temp = arr[j - 1];
-				arr[j - 1] = arr[j];
-				arr[j] = temp;
-				flag = 1;
-			}
-		}
-		if (flag == 0){
-			break;
-		}
-	}
+    if (arr[mid] == key)
+        return mid; // Element found
+    else if (arr[mid] > key)
+        return binarySearch(arr, low, mid - 1, key); // Search in left half
+    else
+        return binarySearch(arr, mid + 1, high, key); // Search in right half
 }
 
-int binarySearch(int arr[], int n, int data){
-	bubbleSort(arr, n);
+// Driver Code
+int main() {
+    int n, key;
 
-	int start = 0, end = n - 1, idx, mid;
+    // Taking user input for array size
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    
+    int arr[n];
 
-	while (start <= end){
-		mid = start + (end - start) / 2;
-		if (arr[mid] == data){
-			idx = mid;
-			return idx;
-		}
-		else if (arr[mid] < data){
-			start = mid + 1;
-		}
-		else
-			end = mid - 1;
-	}
-	printf("Element %d not found in the array\n", data);
-	exit(1);
-}
+    // Taking user input for array elements (must be sorted)
+    printf("Enter %d sorted elements: ", n);
+    for (int i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
 
-int main(){
-	int choice, n, idx, data, i;
-	printf("Enter the number of elements: ");
-	scanf("%d", &n);
+    // Taking user input for the key to be searched
+    printf("Enter the element to search: ");
+    scanf("%d", &key);
 
-	int arr[n];
-	printf("Enter the elements of the array: ");
-	for (i = 0; i < n; i++){
-		scanf("%d", &arr[i]);
-	}
+    // Calling Binary Search
+    int result = binarySearch(arr, 0, n - 1, key);
+    if (result != -1)
+        printf("Element found at index: %d\n", result);
+    else
+        printf("Element not found\n");
 
-	printf("Enter the Element to Find: ");
-	scanf("%d", &data);
-	idx = binarySearch(arr, n, data);
-	printf("%d is present at index %d", data, idx);
-			
-	
-
-	return 0;
+    return 0;
 }
