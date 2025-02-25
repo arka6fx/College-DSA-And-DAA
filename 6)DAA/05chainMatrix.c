@@ -3,20 +3,20 @@
 
 // Function to perform Matrix Chain Multiplication
 void matrixChainOrder(int p[], int n) {
-    int m[n][n], s[n][n];
+    int m[n][n], s[n][n], i,L,k;
 
     // Initialize cost for single matrix multiplication to 0
-    for (int i = 1; i < n; i++) {
+    for (i = 1; i < n; i++) {
         m[i][i] = 0;
     }
 
     // L is the chain length
-    for (int L = 2; L < n; L++) {
-        for (int i = 1; i < n - L + 1; i++) {
+    for (L = 2; L < n; L++) {
+        for (i = 1; i < n - L + 1; i++) {
             int j = i + L - 1;
             m[i][j] = INT_MAX;
 
-            for (int k = i; k < j; k++) {
+            for (k = i; k < j; k++) {
                 int q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
 
                 if (q < m[i][j]) {
