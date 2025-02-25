@@ -48,25 +48,7 @@ int main(){
 		}
 	}
 
-	printf("\nMatrix1 & Matrix2\n");
-	printf("\n");
-	for (i = 0; i < m; i++){
-		for (j = 0; j < n; j++){
-			printf("%d ", matr1[i][j]);
-		}
-		printf("\n");
-	}
-
-	printf("\n");
-
-	for (i = 0; i < p; i++){
-		for (j = 0; j < q; j++){
-			printf("%d ", matr2[i][j]);
-		}
-		printf("\n");
-	}
-
-	printf("\n Multiplication \n");
+	printf("\nMultiplication \n");
 
 	for (i = 0; i < m; i++){
 		for (j = 0; j < q; j++){
