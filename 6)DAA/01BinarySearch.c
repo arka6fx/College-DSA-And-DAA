@@ -16,7 +16,7 @@ int binarySearch(int arr[], int low, int high, int key) {
         return binarySearch(arr, mid + 1, high, key); // Search in right half
 }
 
-// Driver Code
+
 int main() {
     int n, key;
 
