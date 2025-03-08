@@ -25,7 +25,7 @@ void matrixChainOrder(int p[], int n) {
             } 
         }
     }
-
+    
     printf("Minimum number of multiplications: %d\n", m[1][n - 1]);
 }
 

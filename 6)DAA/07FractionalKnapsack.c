@@ -20,10 +20,10 @@ void sortItems(int n, float profit[], float weight[], float ratio[]) {
     }
 }
 
-void fractionalKnapsack(int n, float capacity, float profit[], float weight[]) {
+void fractionalKnapsack(int n, float m, float profit[], float weight[]) {
     float x[100];
-    float u = capacity;
-    float ratio[100];
+    float u = m;
+    float ratio[n];
     int i, j;
     float totalProfit = 0.0;
 
@@ -60,17 +60,12 @@ void fractionalKnapsack(int n, float capacity, float profit[], float weight[]) {
 
 int main() {
     int n;
-    float capacity;
+    float m;
 
     printf("Enter the number of items: ");
     scanf("%d", &n);
 
     float profit[100], weight[100];
-
-    if (n > 100) {
-        printf("Maximum number of items is 100.\n");
-        return 1;
-    }
 
     printf("Enter profit and weight of each item:\n");
     int i;
@@ -80,9 +75,9 @@ int main() {
     }
 
     printf("Enter knapsack capacity: ");
-    scanf("%f", &capacity);
+    scanf("%f", &m);
 
-    fractionalKnapsack(n, capacity, profit, weight);
+    fractionalKnapsack(n, m, profit, weight);
 
     return 0;
 }
