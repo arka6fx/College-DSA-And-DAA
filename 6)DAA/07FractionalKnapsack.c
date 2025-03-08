@@ -21,7 +21,7 @@ void sortItems(int n, float profit[], float weight[], float ratio[]) {
 }
 
 void fractionalKnapsack(int n, float m, float profit[], float weight[]) {
-    float x[100];
+    float x[n];
     float u = m;
     float ratio[n];
     int i, j;
@@ -65,7 +65,7 @@ int main() {
     printf("Enter the number of items: ");
     scanf("%d", &n);
 
-    float profit[100], weight[100];
+    float profit[n], weight[n];
 
     printf("Enter profit and weight of each item:\n");
     int i;
