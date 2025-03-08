@@ -21,11 +21,10 @@ void sortItems(int n, float profit[], float weight[], float ratio[]) {
 }
 
 void fractionalKnapsack(int n, float m, float profit[], float weight[]) {
-    float x[n];
+    float x[n]; 
     float u = m;
     float ratio[n];
     int i, j;
-    float totalProfit = 0.0;
 
     for (i = 0; i < n; i++) {
         ratio[i] = profit[i] / weight[i];
@@ -42,21 +41,18 @@ void fractionalKnapsack(int n, float m, float profit[], float weight[]) {
             break;
         x[j] = 1.0;
         u -= weight[j];
-        totalProfit += profit[j];
     }
 
     if (j < n) {
         x[j] = u / weight[j];
-        totalProfit += profit[j] * x[j];
     }
 
     printf("\nFractions of items taken:\n");
     for (i = 0; i < n; i++) {
         printf("Item %d: %.2f\n", i + 1, x[i]);
     }
-
-    printf("\nTotal profit: %.2f\n", totalProfit);
 }
+
 
 int main() {
     int n;
