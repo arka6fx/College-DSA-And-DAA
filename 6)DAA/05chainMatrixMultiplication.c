@@ -7,10 +7,8 @@ void matrixChainOrder(int p[], int n) {
     int m[n][n], s[n][n], i,L,k;
 
     // Initialize cost for single matrix multiplication to 0
-    for (i = 1; i < n; i++) {
-        m[i][i] = 0;
-    }
-
+    for (i = 1; i < n; i++) m[i][i] = 0;
+  
     // L is the chain length
     for (L = 2; L < n; L++) {
         for (i = 1; i < n - L + 1; i++) {
@@ -24,7 +22,7 @@ void matrixChainOrder(int p[], int n) {
                     m[i][j] = q;
                     s[i][j] = k;
                 }
-            }
+            } 
         }
     }
 
@@ -33,10 +31,14 @@ void matrixChainOrder(int p[], int n) {
 
 // Driver function
 int main() {
-    int arr[] = {5, 4, 6, 2, 7};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    matrixChainOrder(arr, n);
+    int n,i;
+    printf("Enter the total no. of dimensions: ");      
+    scanf("%d",&n);
+    int p[n];
+    for ( i = 0; i <n; i++){
+        scanf("%d",&p[i]);
+    }
+    matrixChainOrder(p, n);
 
     return 0;
 }
