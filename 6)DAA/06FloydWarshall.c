@@ -5,7 +5,19 @@
 
 #define INF 99999
 
-void printSolution(int dist[][V]);
+void printSolution(int dist[][V]) {
+	int i,j;
+    printf("The following matrix shows the shortest distances between every pair of vertices \n");
+    for ( i = 0; i < V; i++) {
+        for ( j = 0; j < V; j++) {
+            if (dist[i][j] == INF)
+                printf("%7s", "INF");
+            else
+                printf("%7d", dist[i][j]);
+        }
+        printf("\n");
+    }
+}
 
 void floydWarshall(int dist[][V]) {
     int i, j, k;
@@ -22,19 +34,6 @@ void floydWarshall(int dist[][V]) {
     printSolution(dist);
 }
 
-void printSolution(int dist[][V]) {
-	int i,j;
-    printf("The following matrix shows the shortest distances between every pair of vertices \n");
-    for ( i = 0; i < V; i++) {
-        for ( j = 0; j < V; j++) {
-            if (dist[i][j] == INF)
-                printf("%7s", "INF");
-            else
-                printf("%7d", dist[i][j]);
-        }
-        printf("\n");
-    }
-}
 
 int main() {
     int graph[V][V] = { { 0,8, INF, 1 },
