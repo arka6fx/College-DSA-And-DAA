@@ -2,14 +2,12 @@
 #include <stdio.h>
 #include <limits.h>
 
-// Function to perform Matrix Chain Multiplication
+
 void matrixChainOrder(int p[], int n) {
     int m[n][n], s[n][n], i,L,k;
 
-    // Initialize cost for single matrix multiplication to 0
     for (i = 1; i < n; i++) m[i][i] = 0;
-  
-    // L is the chain length
+
     for (L = 2; L < n; L++) {
         for (i = 1; i < n - L + 1; i++) {
             int j = i + L - 1;
@@ -29,7 +27,6 @@ void matrixChainOrder(int p[], int n) {
     printf("Minimum number of multiplications: %d\n", m[1][n - 1]);
 }
 
-// Driver function
 int main() {
     int n,i;
     printf("Enter the total no. of dimensions: ");      
