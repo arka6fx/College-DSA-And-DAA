@@ -38,7 +38,7 @@ int main() {
                 break;
             case 3:
                 printf("Exiting program.\n");
-                return 0;
+                return 0;   
             default:
                 printf("Invalid choice! Please try again.\n");
         }
