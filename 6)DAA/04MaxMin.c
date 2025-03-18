@@ -1,59 +1,50 @@
-//18/02/25
 #include <stdio.h>
-#include <limits.h>
 
-void minMax(int arr[], int i, int j, int *min, int *max) {
-    // Base case
-    if (i == j) { // one element left
-        *min = *max = arr[i];
-        return;
+struct MinMax {
+    int min;
+    int max;
+};
+
+struct MinMax findMinMax(int arr[], int low, int high) {
+    struct MinMax result, left, right;
+    int mid;
+
+    if (low == high) {
+        result.min = arr[low];
+        result.max = arr[low];
+        return result;
     }
-    else if (i == j - 1) {  // two elements left
-        if (arr[i] > arr[j]) {
-            *max = arr[i];
-            *min = arr[j];
+
+    if (high == low + 1) {
+        if (arr[low] < arr[high]) {
+            result.min = arr[low];
+            result.max = arr[high];
         } else {
-            *max = arr[j];
-            *min = arr[i];
+            result.min = arr[high];
+            result.max = arr[low];
         }
-        return;
+        return result;
     }
+
+    mid = (low + high) / 2;
+    left = findMinMax(arr, low, mid);      
+    right = findMinMax(arr, mid + 1, high); 
+
     
-    // Divide
-    int mid = i + (j - i) / 2;
-    int max1, min1, max2, min2;
-    
-    // Recursive calls
-    minMax(arr, i, mid, &min1, &max1);
-    minMax(arr, mid + 1, j, &min2, &max2);
-    
-    // Combine
-    *max = (max1 > max2) ? max1 : max2;
-    *min = (min1 < min2) ? min1 : min2;
-    return;
+    result.min = (left.min < right.min) ? left.min : right.min;
+    result.max = (left.max > right.max) ? left.max : right.max;
+
+    return result;
 }
 
 int main() {
-    int n, i;
-    
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-    
-    int arr[n];
-    
-    printf("Enter the elements of the array: ");
-    for (i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    
-    int max = INT_MIN;
-    int min = INT_MAX;
-    
-    minMax(arr, 0, n - 1, &min, &max);
-    
-    printf("Max = %d\n", max);
-    printf("Min = %d\n", min);
-    
+    int arr[] = {3, 5, 1, 8, -2, 7, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    struct MinMax result = findMinMax(arr, 0, n - 1);
+
+    printf("Minimum element: %d\n", result.min);
+    printf("Maximum element: %d\n", result.max);
+
     return 0;
 }
-
