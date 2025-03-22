@@ -1,45 +1,55 @@
-// 04/03/25
 #include <stdio.h>
-#define V 4
-#define INF 99999
+#include <limits.h>
 
-void printSolution(int dist[][V]) {
-	int i,j;
-    printf("The following matrix shows the all pairs of shortest path: \n");
-    for ( i = 0; i < V; i++) {
-        for ( j = 0; j < V; j++) {
-            if (dist[i][j] == INF)
-                printf("%7s", "INF");
-            else
-                printf("%7d", dist[i][j]);
-        }
-        printf("\n");
-    }
-}
+#define INF 999999
+#define MAX_V 100
 
-void floydWarshall(int dist[][V]) {
-    int i, j, k;
-
-    for (k = 0; k < V; k++) {
-        for (i = 0; i < V; i++) {
-            for (j = 0; j < V; j++) {
-                if (dist[i][k] + dist[k][j] < dist[i][j])
-                    dist[i][j] = dist[i][k] + dist[k][j];
+void floydWarshall(int graph[MAX_V][MAX_V], int V) {
+    for (int k = 0; k < V; k++) {
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
+                if (graph[i][k] != INF && graph[k][j] != INF &&
+                    graph[i][j] > graph[i][k] + graph[k][j]) {
+                    graph[i][j] = graph[i][k] + graph[k][j];
+                }
             }
         }
     }
-
-    printSolution(dist);
 }
-
 
 int main() {
-    int graph[V][V] = { { 0,8, INF, 1 },
-                        { INF, 0, 1, INF },
-                        { 4, INF, 0, INF },
-                        { INF, 2, 9, 0 } };
+    int V;
+    
+    printf("Enter the number of vertices (max %d): ", MAX_V);
+    scanf("%d", &V);
 
-    floydWarshall(graph);
+    if (V <= 0 || V > MAX_V) {
+        printf("Invalid number of vertices!\n");
+        return 1;
+    }
+
+    int graph[MAX_V][MAX_V];
+
+    printf("Enter the adjacency matrix (use %d for infinity):\n", INF);
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            scanf("%d", &graph[i][j]);
+            if (i == j) graph[i][j] = 0;  
+        }
+    }
+    
+    floydWarshall(graph, V);
+    
+    printf("\nShortest distance matrix:\n");
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            if (graph[i][j] == INF)
+                printf("INF ");
+            else
+                printf("%d ", graph[i][j]);
+        }
+        printf("\n");
+    }
+    
     return 0;
 }
-
