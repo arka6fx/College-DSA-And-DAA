@@ -1,0 +1,39 @@
+                                            Netaji Subhash Engineering College
+                                                   B.Tech CSE 2nd Year
+                                            Design & Analysis of Algorithm Lab
+                                                  Paper Code – PCC-CS 494
+            
+Q1.Write a C program to implement Linear Search. 			                                
+
+Q2.Write a C program to implement Binary Search using Divide and Conquer approach.          
+
+Q3.Write a C program to implement Merge Sort using Divide and Conquer approach.               
+
+Q4.Write a C program to implement Quick Sort using Divide and Conquer approach.               
+
+Q5.Write a C program to find Maximum and Minimum element from an array of integer using Divide and Conquer  approach.								                          
+ 
+Q6.Write a C program to implement 0-1 Knapsack Problem.				                           
+							           
+Q7.Write a C program to implement Job sequencing with deadlines.			                    
+
+Q8.Write a C program to find the minimum number of scalar multiplication needed for chain of matrix.   
+
+Q9.Write a C program to implement Single Source shortest Path for a graph using Dijkstra Algorithm. 
+                                                                                                        
+Q10.Write a C program to implement Single Source Shortest Path for a graph using Bellman Ford Algorithm.
+                                                                                                                                                            
+Q11.Write a C program to implement all pair of Shortest path for a graph using Floyed- Warshall Algorithm.  
+
+Q12.Write a C program to implement the Fractional Knapsack Problem.	                                   
+    
+Q13.Write a C program to implement N-Queen Problem.              
+
+Q14.Write a C program to implement Breadth First Search (BFS).   		                             
+
+Q15. Write a C program to implement Depth First Search (DFS).                                       
+
+Q16.Write a C program to implement Graph Coloring Problem.                                            
+			
+Q17. Write a C program to implement Tic-Tac-Toe Problem. 				                             
+      
