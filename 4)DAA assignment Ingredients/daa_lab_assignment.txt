@@ -13,7 +13,7 @@ Q4.Write a C program to implement Quick Sort using Divide and Conquer approach.
 
 Q5.Write a C program to find Maximum and Minimum element from an array of integer using Divide and Conquer  approach.								                          
  
-Q6.Write a C program to implement 0-1 Knapsack Problem.				                           
+Q6.Write a C program to implement  Fractional Knapsack Problem.				                           
 							           
 Q7.Write a C program to implement Job sequencing with deadlines.			                    
 
@@ -25,7 +25,7 @@ Q10.Write a C program to implement Single Source Shortest Path for a graph using
                                                                                                                                                             
 Q11.Write a C program to implement all pair of Shortest path for a graph using Floyed- Warshall Algorithm.  
 
-Q12.Write a C program to implement the Fractional Knapsack Problem.	                                   
+Q12.Write a C program to implement the 0-1 Knapsack Problem.	                                   
     
 Q13.Write a C program to implement N-Queen Problem.              
 
