@@ -163,8 +163,8 @@ void switchPlayer() {
 // Tic-Tac-Toe Board:
 //  O |   | O 
 // ---|---|---
-//  X | X |   
+//  X | X | X  
 // ---|---|---
-//    |   | X 
+//    |   |  
 
 // Player X wins!
