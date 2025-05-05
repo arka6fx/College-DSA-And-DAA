@@ -34,6 +34,5 @@ Q14.Write a C program to implement Breadth First Search (BFS).
 Q15. Write a C program to implement Depth First Search (DFS).                                       
 
 Q16.Write a C program to implement Graph Coloring Problem.                                            
-			
-Q17. Write a C program to implement Tic-Tac-Toe Problem. 				                             
-      
+							                             
+
