@@ -27,16 +27,19 @@ struct MinMax findMinMax(int arr[], int low, int high) {
         }
         return result;
     }
-
-    mid = (low + high) / 2;
-    left = findMinMax(arr, low, mid);      
-    right = findMinMax(arr, mid + 1, high); 
-
+    else{
+        mid = (low + high) / 2;
+        left = findMinMax(arr, low, mid);      
+        right = findMinMax(arr, mid + 1, high); 
     
-    result.min = (left.min < right.min) ? left.min : right.min;
-    result.max = (left.max > right.max) ? left.max : right.max;
+        
+        result.min = (left.min < right.min) ? left.min : right.min;
+        result.max = (left.max > right.max) ? left.max : right.max;
+    
+        return result;
+    }
 
-    return result;
+
 }
 
 int main() {

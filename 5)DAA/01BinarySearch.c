@@ -7,14 +7,15 @@ int binarySearch(int arr[], int low, int high, int key) {
         if (arr[low] == key)
            return low;
         else return -1; 
-
-    int mid = low + (high - low) / 2;
-    if (arr[mid] == key)
-        return mid; 
-    else if (arr[mid] > key)
-        return binarySearch(arr, low, mid - 1, key); 
-    else
-        return binarySearch(arr, mid + 1, high, key); 
+    else{
+        int mid = low + (high - low) / 2;
+        if (arr[mid] == key)
+            return mid; 
+        else if (arr[mid] > key)
+            return binarySearch(arr, low, mid - 1, key); 
+        else
+            return binarySearch(arr, mid + 1, high, key); 
+    }
 
 }
 int main() {
